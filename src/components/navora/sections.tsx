@@ -862,59 +862,33 @@ export function ContactCTA() {
   );
 }
 
-const OWNER_EMAIL = "navoraglobalsolutionspvtltd@gmail.com";
-
 function ContactForm() {
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const message = String(data.get("msg") ?? "").trim();
-
-    const subject = `New enquiry from ${name || "website visitor"}`;
-    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n— Sent from navora website`;
-    const mailto = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-    setSent(true);
-  }
-
-  if (sent) {
-    return (
-      <div className="rounded-[24px] border border-cyan/30 bg-white/5 backdrop-blur-md p-8 text-center">
-        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan to-blue text-white">
-          <Mail className="h-5 w-5" />
-        </div>
-        <h3 className="mt-4 font-display font-semibold text-xl text-white">
-          Your email app just opened
-        </h3>
-        <p className="mt-2 text-sm text-white/70 leading-relaxed">
-          Please hit <span className="font-semibold text-white">Send</span> in your email client to
-          deliver your enquiry to{" "}
-          <a href={`mailto:${OWNER_EMAIL}`} className="text-cyan hover:underline">
-            {OWNER_EMAIL}
-          </a>
-          . We'll respond within one business day.
-        </p>
-        <button
-          onClick={() => setSent(false)}
-          className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
-        >
-          Send another enquiry
-        </button>
-      </div>
-    );
-  }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-[24px] border border-white/10 bg-white/5 backdrop-blur-md p-7 space-y-4"
-    >
+<form
+  action="https://formsubmit.co/navoraglobalsolutionspvtltd@gmail.com"
+  method="POST"
+  className="rounded-[24px] border border-white/10 bg-white/5 backdrop-blur-md p-7 space-y-4"
+>
+  <input type="hidden" name="_captcha" value="false" />
+
+<input
+  type="hidden"
+  name="_subject"
+  value="New Enquiry - Navora Global Solutions"
+/>
+
+<input
+  type="hidden"
+  name="_template"
+  value="table"
+/>
+
+<input
+  type="hidden"
+  name="_next"
+  value="https://navoraglobalsolutions.com"
+/>
       <div>
         <label
           htmlFor="name"
@@ -971,8 +945,8 @@ function ContactForm() {
         Send enquiry
       </button>
       <p className="text-xs text-white/50 text-center">
-        Opens your email app pre-filled to {OWNER_EMAIL}.
-      </p>
+  We'll get back to you within one business day.
+</p>
     </form>
   );
 }
