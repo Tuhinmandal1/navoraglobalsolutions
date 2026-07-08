@@ -104,7 +104,7 @@ export function Hero() {
             <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <HeroStat text="50+" label="Point of Contact (Account Manager)" />
               <HeroStat text="Weekly" label="Performance Reports" />
-              <HeroStat number={100} suffix="%" label="Remote-First Team" />
+              <HeroStat number={100} suffix="%" label="Remote team" />
             </div>
           </Reveal>
         </div>
@@ -150,10 +150,10 @@ function HeroStat({
 
 export function TrustBar() {
   const items = [
-    { icon: "🏫", label: "Schools & Institutes" },
-    { icon: "🏬", label: "Retail & Service Businesses" },
-    { icon: "🏢", label: "SMEs & Startups" },
-    { icon: "📞", label: "Support-Driven Teams" },
+    { label: "Schools & Institutes" },
+    { label: "Retail & Service Businesses" },
+    { label: "SMEs & Startups" },
+    { label: "Support-Driven Teams" },
   ];
   return (
     <section className="border-b border-border bg-white py-14">
@@ -203,7 +203,7 @@ export function About() {
 
             <div className="mt-8 grid sm:grid-cols-2 gap-4">
               <div className="rounded-2xl border border-border bg-white p-5 card-lift hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(11,31,58,0.2)]">
-                <h4 className="font-display font-semibold text-navy">Remote-First</h4>
+                <h4 className="font-display font-semibold text-navy">Remote team</h4>
                 <p className="mt-2 text-sm text-ink-muted leading-relaxed">
                   All executives work from secure, well-equipped remote workstations, keeping costs
                   low without compromising accountability.
