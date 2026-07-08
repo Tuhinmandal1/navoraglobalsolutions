@@ -81,27 +81,45 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Navora Global Solutions Pvt. Ltd. is a business process outsourcing (BPO) and managed staffing company providing dedicated customer support, WhatsApp support, and sales & admissions closing teams for schools and growing businesses — fully managed, fully reported.",
+          "Navora Global Solutions Pvt. Ltd. is a business process outsourcing (BPO) and managed staffing company providing dedicated customer support, WhatsApp support, call support, and sales & admissions closing teams — fully managed, fully reported.",
       },
       { name: "author", content: "Navora Global Solutions Pvt. Ltd." },
-      { property: "og:title", content: "Navora Global Solutions — Powering Global Business Operations" },
+      { name: "robots", content: "index,follow" },
+      {
+        property: "og:title",
+        content: "Navora Global Solutions — Powering Global Business Operations",
+      },
       {
         property: "og:description",
         content:
-          "Dedicated, fully-managed customer support and sales teams for schools and growing businesses.",
+          "Dedicated, fully-managed customer support, WhatsApp support, and sales teams — delivered as BPO with training, quality monitoring, and 24/7-ready coverage.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Navora Global Solutions — Powering Global Business Operations" },
-      { name: "description", content: "Navora Global Solutions Pvt. Ltd. is a business process outsourcing (BPO) and managed staffing company providing dedicated customer support, WhatsApp support, and sales & admissions closing teams for schools and growing businesses — fully managed, fully reported." },
-      { property: "og:description", content: "Navora Global Solutions Pvt. Ltd. is a business process outsourcing (BPO) and managed staffing company providing dedicated customer support, WhatsApp support, and sales & admissions closing teams for schools and growing businesses — fully managed, fully reported." },
-      { name: "twitter:description", content: "Navora Global Solutions Pvt. Ltd. is a business process outsourcing (BPO) and managed staffing company providing dedicated customer support, WhatsApp support, and sales & admissions closing teams for schools and growing businesses — fully managed, fully reported." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/81731359-ed02-4afa-bccf-c83c75e3200b/id-preview-943e8ba4--cfa055f8-9a2f-407f-9def-0321647a47d3.lovable.app-1783410035696.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/81731359-ed02-4afa-bccf-c83c75e3200b/id-preview-943e8ba4--cfa055f8-9a2f-407f-9def-0321647a47d3.lovable.app-1783410035696.png" },
+      {
+        name: "twitter:title",
+        content: "Navora Global Solutions — Powering Global Business Operations",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Dedicated, fully-managed customer support, WhatsApp support, and sales teams — delivered as BPO with training, quality monitoring, and 24/7-ready coverage.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/81731359-ed02-4afa-bccf-c83c75e3200b/id-preview-943e8ba4--cfa055f8-9a2f-407f-9def-0321647a47d3.lovable.app-1783410035696.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/81731359-ed02-4afa-bccf-c83c75e3200b/id-preview-943e8ba4--cfa055f8-9a2f-407f-9def-0321647a47d3.lovable.app-1783410035696.png",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/logo.jpeg", type: "image/x-icon" },
+      { rel: "canonical", href: "https://navoraglobalsolutions.com/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

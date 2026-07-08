@@ -12,9 +12,8 @@ export function Footer() {
               <span className="font-display font-extrabold text-lg text-white">NAVORA</span>
             </div>
             <p className="text-sm leading-relaxed max-w-sm">
-              Navora Global Solutions Pvt. Ltd. — Powering Global Business Operations.
-              Dedicated, fully-managed customer support and sales teams for schools and
-              growing businesses.
+              Navora Global Solutions Pvt. Ltd. — Powering Global Business Operations. Dedicated,
+              fully-managed customer support and sales teams for schools and growing businesses.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
@@ -63,11 +62,10 @@ export function Footer() {
               Field notes on support, follow-up, and outsourcing — occasional, no spam.
             </p>
           </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col sm:flex-row gap-3"
-          >
-            <label htmlFor="newsletter" className="sr-only">Email address</label>
+          <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3">
+            <label htmlFor="newsletter" className="sr-only">
+              Email address
+            </label>
             <input
               id="newsletter"
               type="email"
@@ -86,9 +84,15 @@ export function Footer() {
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-4 text-xs text-white/50">
           <p>© 2026 Navora Global Solutions Pvt. Ltd. All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <a href="#" className="hover:text-white">Terms of Service</a>
-            <a href="#" className="hover:text-white">Sitemap</a>
+            <a href="#" className="hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-white">
+              Terms of Service
+            </a>
+            <a href="#" className="hover:text-white">
+              Sitemap
+            </a>
           </div>
         </div>
       </div>

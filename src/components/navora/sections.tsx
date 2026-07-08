@@ -29,7 +29,15 @@ function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
-function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   const ref = useReveal<HTMLDivElement>();
   return (
     <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
@@ -42,7 +50,10 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
 
 export function Hero() {
   return (
-    <section id="home" className="relative isolate overflow-hidden bg-navy-gradient text-white pt-32 pb-24 sm:pt-40 sm:pb-32">
+    <section
+      id="home"
+      className="relative isolate overflow-hidden bg-navy-gradient text-white pt-32 pb-24 sm:pt-40 sm:pb-32"
+    >
       <Constellation />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-navy-deep/80" />
 
@@ -64,9 +75,9 @@ export function Hero() {
 
           <Reveal delay={160}>
             <p className="mt-6 text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Dedicated Customer Support and Sales & Closing executives — fully managed,
-              fully reported, with zero hiring hassle. Navora recruits, trains, and
-              supervises your team so you don't have to.
+              Dedicated Customer Support and Sales & Closing executives — fully managed, fully
+              reported, with zero hiring hassle. Navora recruits, trains, and supervises your team
+              so you don't have to.
             </p>
           </Reveal>
 
@@ -102,13 +113,25 @@ export function Hero() {
   );
 }
 
-function HeroStat({ number, text, suffix = "", label }: { number?: number; text?: string; suffix?: string; label: string }) {
+function HeroStat({
+  number,
+  text,
+  suffix = "",
+  label,
+}: {
+  number?: number;
+  text?: string;
+  suffix?: string;
+  label: string;
+}) {
   const ref = useReveal<HTMLDivElement>();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: 0.6 });
+    const io = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), {
+      threshold: 0.6,
+    });
     io.observe(el);
     return () => io.disconnect();
   }, [ref]);
@@ -135,7 +158,9 @@ export function TrustBar() {
   return (
     <section className="border-b border-border bg-white py-14">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-ink-muted">Built for organizations like these</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-ink-muted">
+          Built for organizations like these
+        </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {items.map((i) => (
             <div key={i.label} className="flex items-center gap-2.5 text-ink font-medium">
@@ -145,8 +170,8 @@ export function TrustBar() {
           ))}
         </div>
         <p className="mt-6 text-xs italic text-ink-muted max-w-xl mx-auto">
-          We're onboarding our first client engagements — real client names and logos will be featured
-          here as those partnerships go live.
+          We're onboarding our first client engagements — real client names and logos will be
+          featured here as those partnerships go live.
         </p>
       </div>
     </section>
@@ -163,32 +188,32 @@ export function About() {
           <Reveal>
             <Eyebrow>Who We Are</Eyebrow>
             <h2 className="mt-4 font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy leading-tight">
-              Navora Global Solutions is a business process outsourcing and managed staffing
-              company built on a simple belief — growing organizations shouldn't have to choose
-              between operational excellence and cost efficiency.
+              Navora Global Solutions is a business process outsourcing and managed staffing company
+              built on a simple belief — growing organizations shouldn't have to choose between
+              operational excellence and cost efficiency.
             </h2>
             <p className="mt-6 text-ink-muted text-base leading-relaxed">
               We provide dedicated, fully-managed executives for customer support, backend
-              operations, WhatsApp communication, and sales & admissions closing — delivered as
-              a structured, accountable service rather than a loose staffing arrangement. Our
-              clients don't just get manpower; they get a system: trained executives, standard
-              operating procedures, quality monitoring, weekly and monthly performance reporting,
-              and a dedicated account manager.
+              operations, WhatsApp communication, and sales & admissions closing — delivered as a
+              structured, accountable service rather than a loose staffing arrangement. Our clients
+              don't just get manpower; they get a system: trained executives, standard operating
+              procedures, quality monitoring, weekly and monthly performance reporting, and a
+              dedicated account manager.
             </p>
 
             <div className="mt-8 grid sm:grid-cols-2 gap-4">
               <div className="rounded-2xl border border-border bg-white p-5 card-lift hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(11,31,58,0.2)]">
                 <h4 className="font-display font-semibold text-navy">Remote-First</h4>
                 <p className="mt-2 text-sm text-ink-muted leading-relaxed">
-                  All executives work from secure, well-equipped remote workstations, keeping
-                  costs low without compromising accountability.
+                  All executives work from secure, well-equipped remote workstations, keeping costs
+                  low without compromising accountability.
                 </p>
               </div>
               <div className="rounded-2xl border border-border bg-white p-5 card-lift hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(11,31,58,0.2)]">
                 <h4 className="font-display font-semibold text-navy">Fully Reported</h4>
                 <p className="mt-2 text-sm text-ink-muted leading-relaxed">
-                  Every enquiry, call, and lead is tracked and reported — nothing happens in a
-                  black box.
+                  Every enquiry, call, and lead is tracked and reported — nothing happens in a black
+                  box.
                 </p>
               </div>
             </div>
@@ -280,8 +305,24 @@ export function Services() {
               Two dedicated roles. One complete operations layer.
             </h2>
             <p className="mt-5 text-ink-muted text-lg leading-relaxed">
-              Every engagement is built around two core executives, backed by the training,
-              tools, and reporting needed to make them effective.
+              Every engagement is built around two core executives, backed by the training, tools,
+              and reporting needed to make them effective.
+              <br />
+              We support <span className="font-semibold text-navy">customer acquisition</span> and
+              improve <span className="font-semibold text-navy">customer engagement</span> with
+              structured <span className="font-semibold text-navy">lead generation</span> and
+              <span className="font-semibold text-navy">lead management</span>, including call
+              support, call management, and WhatsApp chat bot style workflows for fast responses.
+              <br />
+              Our one-platform BPO model covers customer support, 24/7 customer support readiness,
+              customer support operations, salesperson and sales executive execution, and sales
+              management—delivered with trained staff for services, business process outsourcing,
+              and business process management online.
+              <br />
+              For growth teams, we also cover marketing services such as Marketing, digital
+              marketing, advertising, digital advertising, social media, social media handling, and
+              social media handling—so your website management and website design goals are
+              supported by consistent follow-up, conversion, and reporting.
             </p>
           </Reveal>
         </div>
@@ -309,7 +350,15 @@ export function Services() {
   );
 }
 
-function ServiceCard({ icon: Icon, title, desc }: { icon: typeof Headphones; title: string; desc: string }) {
+function ServiceCard({
+  icon: Icon,
+  title,
+  desc,
+}: {
+  icon: typeof Headphones;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="group relative h-full rounded-[20px] border border-border bg-white p-7 card-lift hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgba(11,31,58,0.28)] hover:border-cyan/40">
       <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan/15 to-blue/10 text-blue group-hover:from-cyan group-hover:to-blue group-hover:text-white transition-colors">
@@ -355,8 +404,8 @@ export function WhoWeServe() {
             </h2>
             <p className="mt-5 text-ink-muted text-lg leading-relaxed">
               We currently support schools and growing businesses that receive a steady stream of
-              calls, WhatsApp messages, and leads — and need a dedicated team to make sure none
-              of them go unanswered.
+              calls, WhatsApp messages, and leads — and need a dedicated team to make sure none of
+              them go unanswered.
             </p>
           </div>
         </Reveal>
@@ -437,10 +486,22 @@ export function Values() {
 
 export function WhyOutsource() {
   const items = [
-    { title: "No Hiring Hassle", desc: "We recruit, train, and supervise your executives — you skip job postings, interviews, and onboarding." },
-    { title: "Lower Cost, Same Quality", desc: "Remote-first model keeps overhead down without cutting corners on training or oversight." },
-    { title: "Full Accountability & Reporting", desc: "Weekly and monthly reports mean you always know how enquiries are being handled." },
-    { title: "Faster Time to Live", desc: "Skip months of hiring — your team is trained and operational in a fraction of the time." },
+    {
+      title: "No Hiring Hassle",
+      desc: "We recruit, train, and supervise your executives — you skip job postings, interviews, and onboarding.",
+    },
+    {
+      title: "Lower Cost, Same Quality",
+      desc: "Remote-first model keeps overhead down without cutting corners on training or oversight.",
+    },
+    {
+      title: "Full Accountability & Reporting",
+      desc: "Weekly and monthly reports mean you always know how enquiries are being handled.",
+    },
+    {
+      title: "Faster Time to Live",
+      desc: "Skip months of hiring — your team is trained and operational in a fraction of the time.",
+    },
   ];
   return (
     <section id="why" className="py-24 sm:py-32 bg-surface">
@@ -452,8 +513,8 @@ export function WhyOutsource() {
               The case for a dedicated, managed team.
             </h2>
             <p className="mt-5 text-ink-muted text-lg leading-relaxed">
-              Hiring, training, and managing in-house support and sales staff is slow and
-              expensive. Navora replaces that overhead with a system that's ready from day one.
+              Hiring, training, and managing in-house support and sales staff is slow and expensive.
+              Navora replaces that overhead with a system that's ready from day one.
             </p>
           </div>
         </Reveal>
@@ -528,7 +589,8 @@ export function Team() {
             A growing, fully remote team.
           </h2>
           <p className="mt-5 text-ink-muted leading-relaxed">
-            Recruited, trained, and managed by Navora — working across India to support your operations.
+            Recruited, trained, and managed by Navora — working across India to support your
+            operations.
           </p>
         </Reveal>
       </div>
@@ -573,7 +635,8 @@ export function Insights() {
                     {p}
                   </h3>
                   <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue">
-                    Read more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    Read more{" "}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </article>
@@ -675,8 +738,8 @@ export function Pricing() {
         </div>
 
         <p className="mt-10 text-center text-sm text-ink-muted italic max-w-2xl mx-auto">
-          Every bundle includes a dedicated account manager and weekly reporting. Get in touch
-          for a custom quote tailored to your business.
+          Every bundle includes a dedicated account manager and weekly reporting. Get in touch for a
+          custom quote tailored to your business.
         </p>
       </div>
     </section>
@@ -737,7 +800,10 @@ function PricingCard({ pkg }: { pkg: (typeof PACKAGES)[number] }) {
 
 export function ContactCTA() {
   return (
-    <section id="contact" className="relative py-24 sm:py-32 bg-navy-gradient text-white overflow-hidden">
+    <section
+      id="contact"
+      className="relative py-24 sm:py-32 bg-navy-gradient text-white overflow-hidden"
+    >
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-1/3 left-1/4 h-72 w-72 rounded-full bg-cyan/20 blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-blue/20 blur-3xl" />
@@ -773,7 +839,10 @@ export function ContactCTA() {
             <div className="mt-8 grid sm:grid-cols-2 gap-4 text-sm">
               <div className="flex items-center gap-2 text-white/80">
                 <Mail className="h-4 w-4 text-cyan" />
-                <a href="mailto:navoraglobalsolutionspvtltd@gmail.com" className="hover:text-white break-all">
+                <a
+                  href="mailto:navoraglobalsolutionspvtltd@gmail.com"
+                  className="hover:text-white break-all"
+                >
                   navoraglobalsolutionspvtltd@gmail.com
                 </a>
               </div>
@@ -824,8 +893,8 @@ function ContactForm() {
           Your email app just opened
         </h3>
         <p className="mt-2 text-sm text-white/70 leading-relaxed">
-          Please hit <span className="font-semibold text-white">Send</span> in your email
-          client to deliver your enquiry to{" "}
+          Please hit <span className="font-semibold text-white">Send</span> in your email client to
+          deliver your enquiry to{" "}
           <a href={`mailto:${OWNER_EMAIL}`} className="text-cyan hover:underline">
             {OWNER_EMAIL}
           </a>
@@ -847,7 +916,10 @@ function ContactForm() {
       className="rounded-[24px] border border-white/10 bg-white/5 backdrop-blur-md p-7 space-y-4"
     >
       <div>
-        <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">
+        <label
+          htmlFor="name"
+          className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2"
+        >
           Your name
         </label>
         <input
@@ -860,7 +932,10 @@ function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">
+        <label
+          htmlFor="email"
+          className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2"
+        >
           Work email
         </label>
         <input
@@ -873,7 +948,10 @@ function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="msg" className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">
+        <label
+          htmlFor="msg"
+          className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2"
+        >
           Tell us about your operations
         </label>
         <textarea
@@ -898,4 +976,3 @@ function ContactForm() {
     </form>
   );
 }
-

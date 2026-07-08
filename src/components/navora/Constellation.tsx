@@ -19,7 +19,7 @@ export function Constellation() {
 
     let width = 0;
     let height = 0;
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const mouse = { x: 0, y: 0, active: false };
 
@@ -64,7 +64,8 @@ export function Constellation() {
     const draw = () => {
       t += 0.008;
       const cx = width / 2 + (mouse.active ? (mouse.x - width / 2) * 0.04 : Math.sin(t) * 12);
-      const cy = height / 2 + (mouse.active ? (mouse.y - height / 2) * 0.04 : Math.cos(t * 0.8) * 8);
+      const cy =
+        height / 2 + (mouse.active ? (mouse.y - height / 2) * 0.04 : Math.cos(t * 0.8) * 8);
 
       ctx.clearRect(0, 0, width, height);
 
@@ -150,11 +151,5 @@ export function Constellation() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className="absolute inset-0 h-full w-full"
-    />
-  );
+  return <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 h-full w-full" />;
 }

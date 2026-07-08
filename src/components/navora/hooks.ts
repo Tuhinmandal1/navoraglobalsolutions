@@ -37,7 +37,10 @@ export function useCountUp(target: number, start: boolean, duration = 1400) {
   const [value, setValue] = useState(0);
   useEffect(() => {
     if (!start) return;
-    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
       setValue(target);
       return;
     }
