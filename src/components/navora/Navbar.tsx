@@ -29,7 +29,7 @@ export function Navbar() {
         <Link to="/" className="flex items-center gap-2.5" aria-label="Navora home">
           <LogoMark />
           <span className="font-display font-extrabold tracking-tight text-lg text-navy">
-            NAVORA
+            NAVORA GLOBAL SOLUTIONS
           </span>
         </Link>
 
