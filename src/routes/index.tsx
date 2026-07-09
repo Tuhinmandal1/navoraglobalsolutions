@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/navora/Navbar";
 import { Footer } from "@/components/navora/Footer";
 import { Hero, TrustBar, Values, ContactCTA } from "@/components/navora/sections";
+import WhatsAppFloat from "@/components/navora/WhatsAppFloat";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -28,6 +29,7 @@ function Index() {
         <ContactCTA />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 }
