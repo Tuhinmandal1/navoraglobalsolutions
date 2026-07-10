@@ -544,11 +544,10 @@ export function CaseStudies() {
         <Reveal>
           <Eyebrow>Proof, not promises</Eyebrow>
           <h2 className="mt-4 font-display font-bold text-3xl sm:text-4xl text-navy leading-tight">
-            We're currently onboarding our first client engagements.
+            Every Partnership Starts With Trust
           </h2>
           <p className="mt-5 text-ink-muted leading-relaxed">
-            Real case studies — with outcomes, not claims — will be published here as our
-            engagements go live.
+            We believe exceptional service, clear communication, and consistent results are the foundation of lasting business relationships.
           </p>
         </Reveal>
       </div>
