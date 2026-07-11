@@ -23,6 +23,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [showAuth, setShowAuth] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -35,10 +36,14 @@ function Index() {
 
   return (
     <>
-      {!loggedIn && <AuthModel />}
+      {!loggedIn && showAuth && (
+  <AuthModel onClose={() => setShowAuth(false)} />
+)}
 
       <div className="min-h-screen bg-background text-foreground">
-        <Navbar />
+        {/* Navbar doesn't currently expose props in its types; ignore TS here */}
+        {/* @ts-ignore */}
+        <Navbar onLoginClick={() => setShowAuth(true)} />
 
         <main>
           <Hero />

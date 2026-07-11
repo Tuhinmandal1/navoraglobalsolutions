@@ -13,7 +13,11 @@ const NAV = [
   { label: "Contact", to: "/contact" },
 ] as const;
 
-export function Navbar() {
+type NavbarProps = {
+  onLoginClick?: () => void;
+};
+
+export function Navbar({ onLoginClick }: NavbarProps) {
   const scrolled = useScrolled(40);
   const [open, setOpen] = useState(false);
 
@@ -47,22 +51,32 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
-          <Link
-            to="/contact"
-            onClick={addRipple}
-            className="ripple-container hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-cyan to-blue px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(0,194,255,0.6)] transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2"
-          >
-            Get Started
-          </Link>
-          <button
-            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full text-ink"
-            aria-label="Open menu"
-            onClick={() => setOpen((o) => !o)}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
+        <div className="flex items-center gap-3">
+
+  <button
+    onClick={onLoginClick}
+    className="hidden sm:inline-flex items-center rounded-full border border-blue px-5 py-2.5 text-sm font-semibold text-blue hover:bg-blue hover:text-white transition"
+  >
+    Login
+  </button>
+
+  <Link
+    to="/contact"
+    onClick={addRipple}
+    className="ripple-container hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-cyan to-blue px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(0,194,255,0.6)] transition-transform hover:-translate-y-0.5"
+  >
+    Get Started
+  </Link>
+
+  <button
+    className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full text-ink"
+    aria-label="Open menu"
+    onClick={() => setOpen((o) => !o)}
+  >
+    {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+  </button>
+
+</div>
       </nav>
 
       {open && (
@@ -80,14 +94,26 @@ export function Navbar() {
               </li>
             ))}
             <li>
-              <Link
-                to="/contact"
-                onClick={() => setOpen(false)}
-                className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-cyan to-blue px-5 py-3 text-sm font-semibold text-white"
-              >
-                Get Started
-              </Link>
-            </li>
+  <button
+    onClick={() => {
+      setOpen(false);
+      onLoginClick?.();
+    }}
+    className="w-full rounded-full border border-blue px-5 py-3 text-sm font-semibold text-blue hover:bg-blue hover:text-white transition"
+  >
+    Login
+  </button>
+</li>
+
+<li>
+  <Link
+    to="/contact"
+    onClick={() => setOpen(false)}
+    className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-cyan to-blue px-5 py-3 text-sm font-semibold text-white"
+  >
+    Get Started
+  </Link>
+</li>
           </ul>
         </div>
       )}

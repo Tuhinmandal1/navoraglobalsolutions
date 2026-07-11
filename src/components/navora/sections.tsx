@@ -547,7 +547,9 @@ export function CaseStudies() {
             Every Partnership Starts With Trust
           </h2>
           <p className="mt-5 text-ink-muted leading-relaxed">
-            We believe exceptional service, clear communication, and consistent results are the foundation of lasting business relationships.
+            We believe exceptional service, clear communication, 
+            and consistent results are the foundation of lasting 
+            business relationships.
           </p>
         </Reveal>
       </div>

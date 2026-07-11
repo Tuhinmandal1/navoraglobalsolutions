@@ -9,7 +9,11 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import emailjs from "@emailjs/browser";
 
-export default function AuthModal() {
+type Props = {
+  onClose: () => void;
+};
+
+export default function AuthModel({ onClose }: Props) {
   const [login, setLogin] = useState(true);
 
   const [name, setName] = useState("");
@@ -55,7 +59,7 @@ export default function AuthModal() {
     console.log("Email sent:", result);
 
     alert("Account Created Successfully!");
-    window.location.reload();
+onClose();
 
   } catch (err: any) {
     console.log(err);
@@ -70,7 +74,7 @@ export default function AuthModal() {
       await signInWithEmailAndPassword(auth, email, password);
 
       alert("Login Successful!");
-      window.location.reload();
+onClose();
     } catch (err: any) {
       console.error("Signup Error:", err);
       alert(err.message);
@@ -80,7 +84,13 @@ export default function AuthModal() {
   return (
     <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
 
-      <div className="bg-white rounded-2xl w-[420px] p-8">
+      <div className="relative bg-white rounded-2xl w-[420px] p-8">
+        <button
+  onClick={onClose}
+  className="absolute top-4 right-4 text-gray-500 hover:text-black text-xl"
+>
+  ✕
+</button>
 
         <h2 className="text-2xl font-bold text-center mb-6">
           {login ? "Login" : "Create Account"}
@@ -141,6 +151,12 @@ export default function AuthModal() {
           </button>
 
         </p>
+        <button
+  onClick={onClose}
+  className="mt-5 w-full border border-gray-300 rounded-lg py-3 hover:bg-gray-100"
+>
+  Continue as Guest
+</button>
 
       </div>
 
