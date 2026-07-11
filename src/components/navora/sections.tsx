@@ -14,6 +14,10 @@ import {
   Sparkles,
   Mail,
   Phone,
+  Users,
+  Star,
+  Clock,
+  Award,
 } from "lucide-react";
 import { Constellation } from "./Constellation";
 import { addRipple, useCountUp, useReveal } from "./hooks";
@@ -175,6 +179,133 @@ export function TrustBar() {
         </p>
       </div>
     </section>
+  );
+}
+
+/* ---------- Achievements ---------- */
+
+const ACHIEVEMENT_STATS = [
+  {
+    icon: Users,
+    number: 50,
+    suffix: "+",
+    label: "Executives Deployed",
+    glow: "from-cyan to-blue",
+  },
+  {
+    icon: Building2,
+    number: 15,
+    suffix: "+",
+    label: "Businesses & Schools Served",
+    glow: "from-blue to-cyan",
+  },
+  {
+    icon: Star,
+    number: 98,
+    suffix: "%",
+    label: "Client Satisfaction",
+    glow: "from-cyan to-blue",
+  },
+  {
+    icon: Clock,
+    number: 24,
+    suffix: "/7",
+    label: "Support Coverage",
+    glow: "from-blue to-cyan",
+  },
+];
+
+export function Achievements() {
+  return (
+    <section className="relative isolate overflow-hidden bg-navy-gradient text-white py-24 sm:py-32">
+      <Constellation />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-navy-deep/80" />
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal>
+            <Eyebrow>Our Track Record</Eyebrow>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2 className="mt-4 font-display font-extrabold text-3xl sm:text-5xl leading-tight tracking-tight">
+              We're proud of what we've <span className="text-gradient-cyan">built together</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mt-5 text-white/70 text-base sm:text-lg leading-relaxed">
+              Every number here reflects a client who trusted us with their front line — and a team
+              that showed up for them, every single day.
+            </p>
+          </Reveal>
+
+          <Reveal delay={220}>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan/40 bg-cyan/5 px-4 py-1.5 text-xs font-medium text-cyan">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Accountable by Design
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80">
+                <Award className="h-3.5 w-3.5" />
+                Trained & Supervised Teams
+              </span>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {ACHIEVEMENT_STATS.map((stat, i) => (
+            <Reveal key={stat.label} delay={i * 90}>
+              <AchievementCard {...stat} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AchievementCard({
+  icon: Icon,
+  number,
+  suffix,
+  label,
+  glow,
+}: {
+  icon: typeof Users;
+  number: number;
+  suffix: string;
+  label: string;
+  glow: string;
+}) {
+  const ref = useReveal<HTMLDivElement>();
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), {
+      threshold: 0.5,
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [ref]);
+  const value = useCountUp(number, visible);
+
+  return (
+    <div
+      ref={ref}
+      className="glass-dark card-lift rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1"
+    >
+      <div
+        className={`mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${glow} shadow-[0_0_30px_-8px_rgba(0,194,255,0.6)]`}
+      >
+        <Icon className="h-5 w-5 text-navy" />
+      </div>
+      <div className="mt-5 font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
+        {value}
+        {suffix}
+      </div>
+      <div className="mt-2 text-xs sm:text-sm text-white/60 leading-relaxed">{label}</div>
+    </div>
   );
 }
 

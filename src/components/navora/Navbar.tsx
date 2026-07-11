@@ -2,12 +2,16 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useScrolled, addRipple } from "./hooks";
+import { auth } from "@/firebase";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { useEffect } from "react";
 const logo = "/logo.jpeg";
 
 const NAV = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
+  { label: "Achievements", to: "/achievements" },
   { label: "Why Outsource", to: "/why" },
   { label: "Pricing", to: "/pricing" },
   { label: "Contact", to: "/contact" },
@@ -20,6 +24,14 @@ type NavbarProps = {
 export function Navbar({ onLoginClick }: NavbarProps) {
   const scrolled = useScrolled(40);
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+  return unsubscribe;
+}, []);
 
   return (
     <header
@@ -53,12 +65,24 @@ export function Navbar({ onLoginClick }: NavbarProps) {
 
         <div className="flex items-center gap-3">
 
+  {user ? (
+  <Link to="/profile">
+    <img
+      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
+        user.displayName || user.email || "User"
+      )}&background=0D8ABC&color=fff`}
+      alt="Profile"
+      className="hidden sm:block w-10 h-10 rounded-full border-2 border-blue-500 cursor-pointer"
+    />
+  </Link>
+) : (
   <button
     onClick={onLoginClick}
     className="hidden sm:inline-flex items-center rounded-full border border-blue px-5 py-2.5 text-sm font-semibold text-blue hover:bg-blue hover:text-white transition"
   >
     Login
   </button>
+)}
 
   <Link
     to="/contact"
@@ -94,6 +118,15 @@ export function Navbar({ onLoginClick }: NavbarProps) {
               </li>
             ))}
             <li>
+  {user ? (
+  <Link
+    to="/profile"
+    onClick={() => setOpen(false)}
+    className="block w-full rounded-full bg-blue text-white text-center py-3 font-semibold"
+  >
+    My Profile
+  </Link>
+) : (
   <button
     onClick={() => {
       setOpen(false);
@@ -103,6 +136,7 @@ export function Navbar({ onLoginClick }: NavbarProps) {
   >
     Login
   </button>
+)}
 </li>
 
 <li>
